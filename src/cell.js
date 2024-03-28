@@ -12,7 +12,7 @@ const markerImages = [
 export default function Cell({onPress, marker}){
     let icon = null;
 
-    console.log(marker);
+    //console.log(marker);
     
     if (marker == "Pufferfish") {
         icon = <Image source={markerImages[0]} style={styles.icon}/>
