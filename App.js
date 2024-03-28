@@ -16,6 +16,23 @@ const App = () => {
 
   const [markers, setMarkers] = useState(emptyMarkers)
 
+  const winningConditions = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+    [0, 4, 8], [2, 4, 6]             // Diagonals
+  ];
+
+  const checkWinner = () => {
+    for (let condition of winningConditions) {
+      const [a, b, c] = condition;
+      if (markers[a] && markers[a] === markers[b] && markers[a] === markers[c]) {
+        return markers[a];
+      }
+    }
+    return null;
+  };
+
+
   const markPosition = (position) => {
     // Check if cell is null
     if(markers[position]) return;
@@ -31,6 +48,12 @@ const App = () => {
     }else{
       setActivePlayer("Starfish");
     }
+  }
+
+  const winner = checkWinner();
+  if (winner) {
+      alert(`${winner} wins!`);
+      // You may want to reset the game here
   }
 
   const resetMarkers = () => {
