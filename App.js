@@ -76,7 +76,7 @@ const App = () => {
 
       {/* Reset Button */}
       <Pressable style = {styles.resetButton} onPress={resetMarkers}>
-          <Image source={require(assetDir + "/programmer_art/replay.png")} style={styles.cancelIcon} />
+          <Image source={require(assetDir + "replay.png")} style={styles.cancelIcon} />
       </Pressable>
     </SafeAreaView>
   )
@@ -87,7 +87,7 @@ export default App
 const styles = StyleSheet.create({
   body:{
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#4f3157"
   },
   playerInfo:{
     flexDirection: "column",
