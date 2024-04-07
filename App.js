@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, Pressable, Image, Dimensions} from "react-native"
 import React, { useState } from "react"
-import Cell from "./src/cell";
-
-const assetDir = "./assets/img/programmer_art/";
+import Cell from "./src/Cell";
+const assetDir = "./assets/img/";
 
 const emptyMarkers = [
   "", "", "",
@@ -11,6 +10,7 @@ const emptyMarkers = [
 ]
 
 const App = () => {
+  const [winner, setWinner] = useState(null);
 
   const [activePlayer, setActivePlayer] = useState("Starfish");
 
@@ -22,11 +22,11 @@ const App = () => {
     [0, 4, 8], [2, 4, 6]             // Diagonals
   ];
 
-  const checkWinner = () => {
+  const checkWinner = (marks) => {
     for (let condition of winningConditions) {
       const [a, b, c] = condition;
-      if (markers[a] && markers[a] === markers[b] && markers[a] === markers[c]) {
-        return markers[a];
+      if (marks[a] && marks[a] === marks[b] && marks[a] === marks[c]) {
+        return marks[a];
       }
     }
     return null;
@@ -34,14 +34,16 @@ const App = () => {
 
 
   const markPosition = (position) => {
+    if(winner != null) return;
     // Check if cell is null
     if(markers[position]) return;
 
     // Set Cell
     let markersTemp = [...markers];
     markersTemp[position] = activePlayer;
+    
     setMarkers(markersTemp);
-
+    setWinner(checkWinner(markersTemp));
     // Swap Player
     if(activePlayer == "Starfish"){
       setActivePlayer("Pufferfish");
@@ -50,19 +52,16 @@ const App = () => {
     }
   }
 
-  const winner = checkWinner();
-  if (winner) {
+  if (winner != null) {
       alert(`${winner} wins!`);
-      // You may want to reset the game here
   }
 
   const resetMarkers = () => {
     setMarkers(emptyMarkers);
+    setWinner(null);
   }
-
   return (
     <SafeAreaView style={styles.body}>
-
       {/* Turn Info */}
       <View style={styles.playerInfo}>
         <Text style={styles.playerTxt}>{activePlayer}'s turn</Text>
@@ -71,13 +70,13 @@ const App = () => {
       {/* Cells */}
       <View style={styles.mainContainer}>
         {markers.map((marker, index) => (
-          <Cell key={index} marker={marker} onPress={() => markPosition(index)} />
+          <Cell key={index} marker={marker} winner={winner} onPress={() => markPosition(index)} />
         ))}
       </View>
 
       {/* Reset Button */}
       <Pressable style = {styles.resetButton} onPress={resetMarkers}>
-          <Image source={require(assetDir + "replay.png")} style={styles.cancelIcon} />
+          <Image source={require(assetDir + "/programmer_art/replay.png")} style={styles.cancelIcon} />
       </Pressable>
     </SafeAreaView>
   )
@@ -113,5 +112,5 @@ const styles = StyleSheet.create({
   cancelIcon:{
     width: 100,
     height: 100
-  }
+  },
 })

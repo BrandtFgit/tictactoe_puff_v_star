@@ -1,31 +1,54 @@
 import { StyleSheet, Pressable, Image, Dimensions} from "react-native"
 //import React, { useState } from "react"
 
-const assetDir = "../assets/img/programmer_art/";
+const assetDir = "../assets/img/";
 const windowWidth = Dimensions.get("window").width
-
-const markerImages = [
+let directorystar=0;
+let directorypuff=0;
+const puffMarkerImage = [
     require(assetDir + "pufferfish.png"),
-    require(assetDir + "starfish.png")
+    require(assetDir + "pufferfish-win.png"),
+    require(assetDir + "pufferfish-lose.png"),
+];
+const starMarkerImage = [
+    require(assetDir + "starfish.png"),
+    require(assetDir + "starfish-win.png"),
+    require(assetDir + "starfish-lose.png")
 ];
 
-export default function Cell({onPress, marker}){
+export default function Cell({onPress, marker, winner}){
     let icon = null;
 
     //console.log(marker);
     
     if (marker == "Pufferfish") {
-        icon = <Image source={markerImages[0]} style={styles.icon}/>
+        icon = <Image source={puffMarkerImage[directorypuff]} style={styles.icon}/>
     }
     else if (marker == "Starfish"){
-        icon = <Image source={markerImages[1]} style={styles.icon}/>
+        icon = <Image source={starMarkerImage[directorystar]} style={styles.icon}/>
     }
+    setWinner(winner);
 
     return(
     <Pressable style={styles.cell} onPress={onPress}>
         {icon}
     </Pressable>
     );
+}
+
+function setWinner(winner){
+    if(winner == "Pufferfish"){
+        directorypuff=1;
+        directorystar=2;
+    }
+    else if (winner == "Starfish"){
+        directorypuff=2;
+        directorystar=1;
+    }
+    else if (winner == null){
+        directorypuff=0;
+        directorystar=0;
+    }
 }
 
 const styles = StyleSheet.create({
