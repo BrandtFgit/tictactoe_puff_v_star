@@ -1,7 +1,7 @@
 import { StyleSheet, Pressable, Image, Dimensions} from "react-native"
 //import React, { useState } from "react"
 
-const assetDir = "../assets/img/";
+const assetDir = "../../assets/img/";
 const windowWidth = Dimensions.get("window").width
 let directorystar=0;
 let directorypuff=0;
