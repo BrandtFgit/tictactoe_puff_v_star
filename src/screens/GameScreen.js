@@ -114,7 +114,9 @@ export default function GameScreen({goToScreen, cpuPlayer=false}){
                 <Image style={styles.board} source={require(assetDir + "board.png")}></Image>
                 {markers.map((marker, index) => (
                 <Cell key={index} marker={marker} winner={winner} onPress={() => markPosition(index)} />
-                ))}
+                // there is a strange issue where the top left cells sprite does not change. when someone wins or loses.
+                // I do not know how to fix this.
+            ))}
             </View>
 
             {/* Reset Button */}
