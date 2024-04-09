@@ -69,5 +69,7 @@ export default function App(){
 const styles = StyleSheet.create({
   backgroundImage:{
       position:"absolute",
+      width:windowWidth,
+      height:windowHeight
   }
 });
