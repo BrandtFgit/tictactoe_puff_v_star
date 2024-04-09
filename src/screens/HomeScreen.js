@@ -9,7 +9,8 @@ export default function HomeScreen({goToScreen}){
         <SafeAreaView style={styles.body}>
             
             {/* Title */}
-            <Text> Starfish Vs Pufferfish Tic-Tac-Toe </Text>
+            <Text style={styles.title}> Starfish Vs Pufferfish</Text>
+            <Text>Age of War</Text>
         
             {/* Menu Buttons */}
             <Pressable onPress={() => goToScreen("GameCPU")}>
@@ -34,5 +35,10 @@ const styles = StyleSheet.create({
     },
     backgroundImage:{
         position:"absolute",
-    }
+    },
+    title:{
+        fontSize: 40,
+        fontFamily: "",
+        textAlign: "center",
+    },
 });
