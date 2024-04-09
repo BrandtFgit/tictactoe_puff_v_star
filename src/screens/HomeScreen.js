@@ -3,15 +3,17 @@ import { useState } from "react";
 import Cell from "../components/Cell";
 const assetDir = "../../assets/img/";
 
+const windowWidth = Dimensions.get("window").width
+const windowHeight = Dimensions.get("window").height
 
 export default function HomeScreen({goToScreen, onChangeBG}){
     return (
         <SafeAreaView style={styles.body}>
-            <Image source={require(assetDir + "logo.png")}></Image>
-            {/* Title */}
-            <Text style={styles.title}> Starfish vs Pufferfish</Text>
-            <Text style={styles.subtitle}>Age of War</Text>
-        
+            {/* Logo  Image */}
+            <View style={styles.logocontainer}>
+            <Image style={styles.logo} source={require(assetDir + "logo.png")}></Image>
+            </View>
+                    
             {/* Menu Buttons */}
             <View style={styles.buttonContainer}>
             <Pressable style={styles.button} onPress={() => goToScreen("GameCPU")}>
@@ -52,12 +54,6 @@ const styles = StyleSheet.create({
     backgroundImage:{
         position:"absolute",
     },
-    title:{
-        fontSize: 35,
-        paddingTop: 35,
-        fontWeight: "bold",
-        textAlign: "center",
-    },
     subtitle:{
         fontSize: 20,
         textAlign: "center",
@@ -82,5 +78,14 @@ const styles = StyleSheet.create({
     buttonTxt:{
         fontSize: 20,
         color: "white",
+    },
+    logocontainer:{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    logo:{
+        width: windowWidth,
+        height: windowHeight/3,
     }
 });
