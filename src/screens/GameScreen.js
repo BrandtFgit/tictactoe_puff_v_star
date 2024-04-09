@@ -12,7 +12,7 @@ const emptyMarkers = [
 
 let gameStatus = "";
 
-export default function GameScreen({goToScreen}){
+export default function GameScreen({goToScreen, cpuPlayer=false}){
 
     const [winner, setWinner] = useState(null);
 
@@ -54,11 +54,12 @@ export default function GameScreen({goToScreen}){
         
         setMarkers(markersTemp);
         setWinner(checkWinner(markersTemp));
+
         // Swap Player
         if(activePlayer == "Starfish"){
-        setActivePlayer("Pufferfish");
+            setActivePlayer("Pufferfish");
         }else{
-        setActivePlayer("Starfish");
+            setActivePlayer("Starfish");
         }
     }
 
@@ -77,6 +78,23 @@ export default function GameScreen({goToScreen}){
             gameStatus = `${activePlayer}'s turn`
     }
     
+    if(cpuPlayer && activePlayer == "Pufferfish"){
+        // CPU LOGIC
+        if(cpuPlayer == true){
+            let validCPUMarkers=[];
+            let counter = 0;
+
+            for(let mark of markers){
+                if (mark == ""){
+                    validCPUMarkers.push(counter);
+                    
+                }
+                counter+=1;
+            }
+            const randomMarker = Math.floor(Math.random() * validCPUMarkers.length);
+            markPosition([validCPUMarkers[randomMarker]])
+        }
+    }
 
     const resetMarkers = () => {
         setMarkers(emptyMarkers);

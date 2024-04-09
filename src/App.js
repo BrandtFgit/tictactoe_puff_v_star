@@ -18,8 +18,12 @@ const App = () => {
           break;
         
         case "Game":
-          return <GameScreen goToScreen={goToScreen}/>;
+          return <GameScreen goToScreen={goToScreen} cpuPlayer={false}/>;
           break;
+        
+        case "GameCPU":
+        return <GameScreen goToScreen={goToScreen} cpuPlayer={true}/>;
+        break;
       }
     }
 
