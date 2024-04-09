@@ -30,19 +30,22 @@ export default function HomeScreen({goToScreen, onChangeBG}){
             </View>
 
             {/* Background Buttons */}
+            <View>
+                <Pressable  onPress={() => onChangeBG(1)}>
+                    <Text>Background 1</Text>
+                    <Image source={require(assetDir + "bg/bg1.png")}></Image>
+                </Pressable>
 
-            <Pressable  onPress={() => onChangeBG(1)}>
-                <Text>Background 1</Text>
-            </Pressable>
+                <Pressable onPress={() => onChangeBG(2)}>
+                    <Text>Background 2</Text>
+                    <Image source={require(assetDir + "bg/bg2.png")}></Image>
+                </Pressable>
 
-            <Pressable onPress={() => onChangeBG(2)}>
-                <Text>Background 2</Text>
-            </Pressable>
-
-            <Pressable onPress={() => onChangeBG(3)}>
-                <Text>Background 3</Text>
-            </Pressable>
-
+                <Pressable onPress={() => onChangeBG(3)}>
+                    <Text>Background 3</Text>
+                    <Image source={require(assetDir + "bg/bg3.png")}></Image>
+                </Pressable>
+            </View>
         </SafeAreaView>
     )
 }
