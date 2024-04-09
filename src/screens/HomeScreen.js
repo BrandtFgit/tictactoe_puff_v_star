@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, SafeAreaView, Pressable, Image, Dimensions} from "react-native"
 import { useState } from "react";
 import Cell from "../components/Cell";
-const assetDir = "../../assets/img/bg/";
+const assetDir = "../../assets/img/";
 
 
 export default function HomeScreen({goToScreen, onChangeBG}){
     return (
         <SafeAreaView style={styles.body}>
-            
+            <Image source={require(assetDir + "logo.png")}></Image>
             {/* Title */}
             <Text style={styles.title}> Starfish vs Pufferfish</Text>
             <Text style={styles.subtitle}>Age of War</Text>
