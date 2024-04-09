@@ -4,7 +4,7 @@ import Cell from "../components/Cell";
 const assetDir = "../../assets/img/bg/";
 
 
-export default function HomeScreen({goToScreen}){
+export default function HomeScreen({goToScreen, onChangeBG}){
     return (
         <SafeAreaView style={styles.body}>
             
@@ -22,6 +22,18 @@ export default function HomeScreen({goToScreen}){
 
             <Pressable onPress={() => goToScreen("About")}>
                 <Text>About</Text>
+            </Pressable>
+
+            <Pressable onPress={() => onChangeBG(1)}>
+                <Text>Background 1</Text>
+            </Pressable>
+
+            <Pressable onPress={() => onChangeBG(2)}>
+                <Text>Background 2</Text>
+            </Pressable>
+
+            <Pressable onPress={() => onChangeBG(3)}>
+                <Text>Background 3</Text>
             </Pressable>
 
         </SafeAreaView>
