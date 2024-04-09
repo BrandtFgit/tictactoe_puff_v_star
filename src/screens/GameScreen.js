@@ -12,7 +12,7 @@ const emptyMarkers = [
 
 let gameStatus = "";
 
-export default function GameScreen(){
+export default function GameScreen({goToScreen}){
 
     const [winner, setWinner] = useState(null);
 
@@ -105,7 +105,7 @@ export default function GameScreen(){
             </Pressable>
 
             {/* Back To Menu Button */}
-            <Pressable style = {styles.backButton} onPress={resetMarkers}>
+            <Pressable style = {styles.backButton} onPress={() => goToScreen("Home")}>
                 <Image source={require(assetDir + "back.png")} style={styles.cancelIcon} />
             </Pressable>
         </SafeAreaView>
