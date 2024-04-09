@@ -133,7 +133,6 @@ export default function GameScreen({goToScreen, cpuPlayer=false}){
 const styles = StyleSheet.create({
     body:{
         flex: 1,
-        backgroundColor: "#E3C88A"
     },
     playerInfo:{
       flexDirection: "column",

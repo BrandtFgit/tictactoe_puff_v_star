@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, SafeAreaView, Pressable, Image, Dimensions} from "react-native"
 import { useState } from "react";
 import Cell from "../components/Cell";
-const assetDir = "../../assets/img/";
+const assetDir = "../../assets/img/bg/";
 
 
 export default function HomeScreen({goToScreen}){
     return (
         <SafeAreaView style={styles.body}>
+            
             {/* Title */}
             <Text> Starfish Vs Pufferfish Tic-Tac-Toe </Text>
         
@@ -18,10 +19,11 @@ export default function HomeScreen({goToScreen}){
             <Pressable onPress={() => goToScreen("Game")}>
                 <Text>Play V.S. Player</Text>
             </Pressable>
-            
-            <Pressable onPress={() => goToScreen("Game")}>
+
+            <Pressable onPress={() => goToScreen("About")}>
                 <Text>About</Text>
             </Pressable>
+
         </SafeAreaView>
     )
 }
@@ -29,6 +31,8 @@ export default function HomeScreen({goToScreen}){
 const styles = StyleSheet.create({
     body:{
         flex: 1,
-        backgroundColor: "#E3C88A"
+    },
+    backgroundImage:{
+        position:"absolute",
     }
 });
