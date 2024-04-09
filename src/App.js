@@ -22,7 +22,9 @@ export default function App(){
     }
 
     const renderBackground = () => {
-      // I have to work under this bizzare limitation. Otherwise i'd just say bg + backgroundImage + .png.
+      
+      // I have to work under this bizzare limitation. Otherwise i'd just say bg + backgroundImage + .png. -Brandt
+
       switch(backgroundImage){
         case 1:
           return <Image style={styles.backgroundImage} source={require(assetDir + "/bg/bg1.png")}></Image>
