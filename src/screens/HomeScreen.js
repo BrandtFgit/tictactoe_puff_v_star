@@ -30,20 +30,18 @@ export default function HomeScreen({goToScreen, onChangeBG}){
             </View>
 
             {/* Background Buttons */}
-            <View>
+            <Text style={styles.subtitle}>Choose Background</Text>
+            <View style={styles.backgroundbuttcontainer}>
                 <Pressable  onPress={() => onChangeBG(1)}>
-                    <Text>Background 1</Text>
-                    <Image source={require(assetDir + "bg/bg1.png")}></Image>
+                    <Image style={styles.image} source={require(assetDir + "bg/bg1.png")}></Image>
                 </Pressable>
 
                 <Pressable onPress={() => onChangeBG(2)}>
-                    <Text>Background 2</Text>
-                    <Image source={require(assetDir + "bg/bg2.png")}></Image>
+                    <Image style={styles.image} source={require(assetDir + "bg/bg2.png")}></Image>
                 </Pressable>
 
                 <Pressable onPress={() => onChangeBG(3)}>
-                    <Text>Background 3</Text>
-                    <Image source={require(assetDir + "bg/bg3.png")}></Image>
+                    <Image style={styles.image} source={require(assetDir + "bg/bg3.png")}></Image>
                 </Pressable>
             </View>
         </SafeAreaView>
@@ -58,6 +56,7 @@ const styles = StyleSheet.create({
         position:"absolute",
     },
     subtitle:{
+        padding: 10,
         fontSize: 20,
         textAlign: "center",
         fontWeight: "bold",
@@ -90,5 +89,19 @@ const styles = StyleSheet.create({
     logo:{
         width: windowWidth,
         height: windowHeight/3,
-    }
+    },
+    image:{
+        width: 100,
+        height: "80%",
+        borderColor: "#644D3E",
+        borderWidth: 2,
+        borderRadius: 10,
+        margin: 10,
+    },
+    backgroundbuttcontainer:{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+    },
 });

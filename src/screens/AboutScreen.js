@@ -21,9 +21,9 @@ export default function AboutScreen({goToScreen}){
             <Text style={styles.subtitle}>Credits:</Text>
             <Text>Starfish VS Pufferfish: Age of War</Text>
             <Text>Brandt Fowler - Lead Programmer, Lead Artist</Text>
-            <Text>Andrew Reimert - Lead Design, Assistant Artist</Text>
-            <Text>Adam McDougal</Text>
-            <Text>Rhianna Smith</Text>
+            <Text>Andrew Reimert - Lead Design, Assistant Programmer</Text>
+            <Text>Adam McDougal - Assistant Programmer</Text>
+            <Text>Rhianna Smith - Assistant Programmer</Text>
             </View>
 
             {/* Back To Menu Button */}
