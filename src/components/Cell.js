@@ -37,17 +37,22 @@ export default function Cell({onPress, marker, winner}){
 }
 
 function setWinner(winner){
-    if(winner == "Pufferfish"){
-        directorypuff=1;
-        directorystar=2;
-    }
-    else if (winner == "Starfish"){
-        directorypuff=2;
-        directorystar=1;
-    }
-    else if (winner == null){
-        directorypuff=0;
-        directorystar=0;
+    switch(winner){
+        case "Pufferfish":
+            directorypuff=1;
+            directorystar=2;
+            break;
+        case "Starfish":
+            directorypuff=2;
+            directorystar=1;
+            break;
+        case "Tie":
+            directorypuff=2;
+            directorystar=2;
+            break;
+        case null:
+            directorypuff=0;
+            directorystar=0;
     }
 }
 
@@ -58,10 +63,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 6
         },
-        icon:{
+    icon:{
         height:100,
         width:100
-        }
+    }
 });
