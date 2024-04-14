@@ -1,10 +1,11 @@
 import { StyleSheet, Pressable, Image, Dimensions} from "react-native"
-//import React, { useState } from "react"
+import React, { useState, useEffect } from 'react';
 
 const assetDir = "../../assets/img/";
 const windowWidth = Dimensions.get("window").width
 let directorystar=0;
 let directorypuff=0;
+
 const puffMarkerImage = [
     require(assetDir + "pufferfish.png"),
     require(assetDir + "pufferfish-win.png"),
@@ -16,23 +17,28 @@ const starMarkerImage = [
     require(assetDir + "starfish-lose.png")
 ];
 
-export default function Cell({onPress, marker, winner}){
-    let icon = null;
+export default function Cell({ onPress, marker, winner }) {
+    const [icon, setIcon] = useState(null);
 
-    //console.log(marker);
-    
-    if (marker == "Pufferfish") {
-        icon = <Image source={puffMarkerImage[directorypuff]} style={styles.icon}/>
-    }
-    else if (marker == "Starfish"){
-        icon = <Image source={starMarkerImage[directorystar]} style={styles.icon}/>
-    }
+    useEffect(() => {
+        setIcon(newIcon);
+    }, [marker, directorypuff, directorystar, winner]); 
+
+        let newIcon = null;
+
+        if (marker === "Pufferfish") {
+            newIcon = <Image source={puffMarkerImage[directorypuff]} style={styles.icon}/>
+        }
+        else if (marker === "Starfish"){
+            newIcon = <Image source={starMarkerImage[directorystar]} style={styles.icon}/>
+        }
+
     setWinner(winner);
 
     return(
-    <Pressable style={styles.cell} onPress={onPress}>
-        {icon}
-    </Pressable>
+        <Pressable style={styles.cell} onPress={onPress}>
+            {icon}
+        </Pressable>
     );
 }
 
